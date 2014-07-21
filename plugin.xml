@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="J Smell Prober"
+            id="cn.csu.plusin.jsmellprober">
+      </category>
+      <view
+            name="Smell View"
+            icon="icons/sample.gif"
+            category="cn.csu.plusin.jsmellprober"
+            class="cn.csu.plusin.jsmellprober.views.SmellView"
+            id="cn.csu.plusin.jsmellprober.views.SmellView">
+      </view>
+      <view
+            category="cn.csu.plusin.jsmellprober"
+            class="cn.csu.plusin.jsmellprober.views.MetricView"
+            icon="icons/sample.gif"
+            id="cn.csu.plusin.jsmellprober.views.MetricView"
+            name="Metric View">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               ratio="0.5"
+               relative="org.eclipse.ui.views.ProblemView"
+               relationship="right"
+               id="cn.csu.plusin.jsmellprober.views.SmellView">
+         </view>
+         <view
+               id="cn.csu.plusin.jsmellprober.views.MetricView"
+               minimized="false"
+               relationship="right"
+               relative="org.eclipse.ui.views.ProblemView">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <menu
+               label="JSmellProber">
+            <command
+                  commandId="cn.csu.plusin.jsmellprober.commands.addtoview"
+                  icon="icons/sample.gif"
+                  style="push">
+            </command>
+            <command
+                  commandId="cn.csu.plusin.jsmellprober.commands.openmetricview"
+                  icon="icons/sample.gif"
+                  style="push">
+            </command>
+            <command
+                  commandId="cn.csu.plusin.jsmellprober.commands.opensmellview"
+                  icon="icons/sample.gif"
+                  style="push">
+            </command>
+            <command
+                  commandId="cn.csu.plusin.jsmellprober.commands.addToFavorite"
+                  icon="icons/sample.gif"
+                  style="push">
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            categoryId="cn.csu.plusin.jsmellprober.commands.category"
+            id="cn.csu.plusin.jsmellprober.commands.opensmellview"
+            name="Open Smell View">
+      </command>
+      <category
+            id="cn.csu.plusin.jsmellprober.commands.category"
+            name="JSmellProber">
+      </category>
+      <command
+            categoryId="cn.csu.plusin.jsmellprober.commands.category"
+            id="cn.csu.plusin.jsmellprober.commands.addtoview"
+            name="Add To View">
+      </command>
+      <command
+            categoryId="cn.csu.plusin.jsmellprober.commands.category"
+            id="cn.csu.plusin.jsmellprober.commands.openmetricview"
+            name="Open Metric View">
+      </command>
+      <command
+            categoryId="cn.csu.plusin.jsmellprober.commands.category"
+            id="cn.csu.plusin.jsmellprober.commands.addToFavorite"
+            name="Add To Favorite">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="cn.csu.plusin.jsmellprober.handler.OpenSmellViewHandler"
+            commandId="cn.csu.plusin.jsmellprober.commands.opensmellview">
+      </handler>
+      <handler
+            class="cn.csu.plusin.jsmellprober.handler.AddToProjectHandler"
+            commandId="cn.csu.plusin.jsmellprober.commands.addtoview">
+      </handler>
+      <handler
+            class="cn.csu.plusin.jsmellprober.handler.OpenMetricViewHandler"
+            commandId="cn.csu.plusin.jsmellprober.commands.openmetricview">
+      </handler>
+      <handler
+            class="cn.csu.plusin.jsmellprober.handler.AddToFavoritesHandler"
+            commandId="cn.csu.plusin.jsmellprober.commands.addToFavorite">
+      </handler>
+
+   </extension>
+
+</plugin>
