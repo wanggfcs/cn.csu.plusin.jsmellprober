@@ -121,7 +121,7 @@ public class WMCVisitor extends ASTVisitor {
 		
 			param.setMethodCyclomatic(cyclomatic);
 			paramList.add(param);
-			System.out.println(param.getMethodName()+"\t"+param.getMethodCyclomatic());
+//			System.out.println(param.getMethodName()+"\t"+param.getMethodCyclomatic());
 //			cyclomatic = 1;
 		
 
