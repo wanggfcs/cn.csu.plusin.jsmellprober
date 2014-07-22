@@ -81,9 +81,13 @@ public class TCCVisitor extends ASTVisitor {
 		return t;
 	}
 
-	// 计算组合数
+	// 计算组合数ICPVisitor
 	public int zuhe(int n, int r) {
-		return fac(n) / (fac(n - r) * fac(r));
+		int fenzi = 1;
+		for(int i = 0;i<r;i++){
+			fenzi*=(n-i);
+		}
+		return fenzi /  fac(r);
 	}
 
 	public int getResult() {

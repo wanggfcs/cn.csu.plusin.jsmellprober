@@ -25,6 +25,7 @@ public class CompilationUnitUtil {
 //			WMCVisitor WMCV = new WMCVisitor();
 //			NOLVVisitor NOLV = new NOLVVisitor();
 			TCCVisitor TCCV = new TCCVisitor();
+			ICPVisitor ICPV = new ICPVisitor();
 //			WMCV.setUnit(cu);
 //			WMCV.setSource(icu.getSource());
 //			cu.accept(MRCv);
@@ -35,6 +36,7 @@ public class CompilationUnitUtil {
 //			cu.accept(WMCV);
 //			cu.accept(NOLV);
 			cu.accept(TCCV);
+			cu.accept(ICPV);
 //			System.out.println("MRC: "+MRCv.getResult());
 //			System.out.println("MPC: "+MPCv.getResult());
 //			System.out.println("DAC: "+DACV.getResult());
@@ -42,7 +44,8 @@ public class CompilationUnitUtil {
 //			System.out.println("OCMEC: "+OCMECV.getResult());
 //			System.out.println("WMC: "+WMCV.getResult());
 //			System.out.println("NOLV: "+NOLV.getResult());
-			System.out.println("TCCV: "+TCCV.getResult());
+			System.out.println("TCCV: "+TCCV.getResult()+"%");
+			System.out.println("ICPV: "+ICPV.getRusult());
 			//
 
 		} catch (Exception e) {
