@@ -106,7 +106,7 @@ public class TCCVisitor extends ASTVisitor {
 					if (mp.getMethodVaribleList().contains(akey)) {
 						attributeUseTime++;
 					}
-				}
+				}wwwww
 				// 计算出现的组合
 				if (attributeUseTime >= 2) {
 					pairsOfComAttrMethod += zuhe(attributeUseTime, 2);
