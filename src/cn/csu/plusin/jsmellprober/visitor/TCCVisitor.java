@@ -41,7 +41,7 @@ public class TCCVisitor extends ASTVisitor {
 		return false;
 
 	}
-
+	//获得方法遍历
 	public boolean visit(MethodDeclaration node) {
 		param = new MethodParam();
 		node.accept(new MethodVisitor());
@@ -57,7 +57,7 @@ public class TCCVisitor extends ASTVisitor {
 
 	class MethodVisitor extends ASTVisitor {
 		public boolean visit(SimpleName node) {
-
+			//获得全部变量
 			if (node.resolveBinding() instanceof IVariableBinding) {
 				IVariableBinding itb = (IVariableBinding) node.resolveBinding();
 				param.addMethodVarible(itb.getKey());
@@ -67,7 +67,7 @@ public class TCCVisitor extends ASTVisitor {
 
 		}
 	}
-
+	//计算阶乘数
 	private int fac(int n){
 		int i,t=1;
 		if(n>0){
@@ -78,10 +78,32 @@ public class TCCVisitor extends ASTVisitor {
 		return t;
 	}
 	
+	//计算组合数
+	public  int zuhe(int n ,int r){
+		return fac(n)/(fac(n-r)*fac(r));
+	}
+	
+	
 	public int getResult() {
 		int pairsOfMethod =0,methodNum = methodList.size();
-		pairsOfMethod = fac(methodNum)/((methodNum-2)*2);
-		return 0;
+		int pairsOfComAttrMethod=0;
+		pairsOfMethod = zuhe(methodNum,2);
+		//遍历类的所有属性
+		for(String akey: attributeSet){
+			//属性在多少方法中出现
+			int attributeUseTime=0;
+			//变量所有方法，看是否有使用属性
+			for(MethodParam mp:methodList){
+				if(mp.getMethodVaribleList().contains(akey)){
+					attributeUseTime++;
+				}
+			}
+			//计算出现的组合
+			pairsOfComAttrMethod+=zuhe(attributeUseTime,2);
+			
+		}
+		
+		return pairsOfComAttrMethod/pairsOfMethod*100;
 
 	}
 }
