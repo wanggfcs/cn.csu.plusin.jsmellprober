@@ -17,7 +17,16 @@ import org.eclipse.jdt.core.dom.TypeDeclaration;
 import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 
 import cn.csu.plusin.jsmellprober.model.MethodParam;
-
+/**
+ * <ul>
+ * <li>Name: TCC, Tight Class Cohesion</li>
+ * <li>Description:the relative number of 
+ * method pairs of a class that access in common
+ *  at least one attribute of the measured class</li>
+ * <li>Granularity: Class</li>
+ * <li>Default Values: TCC * 100 </li>
+ * </ul>
+ */
 public class TCCVisitor extends ASTVisitor {
 
 	private MethodParam param;
